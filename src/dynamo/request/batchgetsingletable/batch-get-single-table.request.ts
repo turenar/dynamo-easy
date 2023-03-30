@@ -55,7 +55,7 @@ export class BatchGetSingleTableRequest<T, T2 = T> extends BaseRequest<
    */
   projectionExpression(...attributesToGet: Array<keyof T | string>): BatchGetSingleTableRequest<T, Partial<T>> {
     addProjectionExpressionParam(attributesToGet, this.params.RequestItems[this.tableName], this.metadata)
-    return this
+    return this as BatchGetSingleTableRequest<T, Partial<T>>
   }
 
   /**

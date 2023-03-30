@@ -38,7 +38,7 @@ export class GetRequest<T, T2 = T> extends StandardRequest<T, T2, DynamoDB.GetIt
    */
   projectionExpression(...attributesToGet: Array<keyof T | string>): GetRequest<T, Partial<T>> {
     addProjectionExpressionParam(attributesToGet, this.params, this.metadata)
-    return this
+    return this as GetRequest<T, Partial<T>>
   }
 
   execFullResponse(): Promise<GetResponse<T2>> {

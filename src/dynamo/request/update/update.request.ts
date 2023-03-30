@@ -54,7 +54,7 @@ export class UpdateRequest<T, T2 = void> extends WriteRequest<
     returnValues: 'ALL_OLD' | 'ALL_NEW' | 'UPDATED_OLD' | 'UPDATED_NEW' | 'NONE',
   ): UpdateRequest<T, T | Partial<T> | void> {
     this.params.ReturnValues = returnValues
-    return this
+    return this as UpdateRequest<T, T | Partial<T> | void>
   }
 
   protected doRequest(params: DynamoDB.UpdateItemInput): Promise<DynamoDB.UpdateItemOutput> {
